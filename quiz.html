@@ -177,9 +177,11 @@
 			}
 			
 			function updateQuestion(){
-				$("#q").hide(400);
+				//$("#q").hide(400);
+				$('#q').fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0, function() { $(this).fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0); }); }); });
 				$("#q").html(currentQuestion+". "+qArray[currentQuestion-1][0]);
-				$("#q").show(400);
+				//$("#q").show(400);
+				
 			};
 			function updateMsg(){
 				$("#msg").html(qArray[currentQuestion-1][2]);
