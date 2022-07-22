@@ -99,8 +99,12 @@
 			
 			function updateQuestion(){
 				//$("#q").hide(400);
-				$('#q').fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0, function() { $(this).fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0); }); }); });
-				$("#q").html(currentQuestion+". "+qArray[parseInt(currentQuestion)-1][0]);
+				theQ = $('#q');
+				theQ.fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0, function() { $(this).fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0); }); }); });
+				currentQNumber = parseInt(currentQuestion)-1;
+				currentQArray = qArray[currentQNumber];
+				currentQText = currentQArray[0];
+				theQ.html(currentQuestion+". "+currentQText);
 				//$("#q").show(400);
 				
 			};
