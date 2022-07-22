@@ -1,0 +1,308 @@
+
+<html>
+<head>
+	<title>Happy Anniversary!</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<script>
+	var qArray = [
+		["What is the first word Emily says in the 2004 test of Sony camera video?",
+		"cheese",
+		'<iframe width="560" height="315" src="https://www.youtube.com/embed/Cjkfgoo-OJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+		],
+		["What color were Joseph's sleeves on his first day of preschool?",
+		"orange",
+		"<img src='images/jpreschool.jpg' width='100%'/>"
+		],
+		["What did Emily dress up as for Haloween the year Eva was born?",
+		"snow white",
+		"<img src='images/emilywhite.jpg' width='100%'/>"
+		],
+		["How many items of footwear was our family wearing when we left Explora in 2006?",
+		"7",
+		"<img src='images/explora.jpg' width='100%'/>"
+		],
+		["Who was holding Emily at my family's 2006 Thanksgiving get-together?",
+		"dodie",
+		"You look super cute in this!<img src='images/thanks.jpg' width='100%'/>"
+		],
+		["How many were in our group when we went to the dinosaur museum in 2007?",
+		"17",
+		"<img src='images/dino.jpg' width='100%'/>"
+		],
+		["What is the clown holding on the sign at Circus Circus?",
+		"lollipop",
+		"<img src='images/circus.jpg' width='100%'/>"
+		],
+		["What color were both girls wearing when we went to White Sands?",
+		"pink",
+		"Man!  You are beautiful!<img src='images/whitesands.jpg' width='100%'/>"
+		],
+		["Which non-family-member went with us on Joshua's first campout?",
+		"kaitlyn",
+		"<img src='images/kaitlyn.jpg' width='100%'/>"
+		],
+		["What did Joshua dress up as for his first Halloween?",
+		"zebra",
+		"<img src='images/johalloween.jpg' width='100%'/>"
+		],
+		["What career did Eva choose for her presentation in Kindergarten?",
+		"vet",
+		"Nice job on the dog cone collar<img src='images/evavet.jpg' width='100%'/>"
+		],
+		["What brand of camera did your Dad take on our Lewis and Clark adventures?",
+		"olympus",
+		"<img src='images/lewisandclark.jpg' width='100%'/>"
+		],
+		["Who wore flip-flops and mittens to Meteor Crater in Arizona?",
+		"eva",
+		"<img src='images/meteor.jpg' width='100%'/>"
+		],
+		["What character was on Eva's shirt when we went to a Utah Blaze football game?",
+		"tinkerbell",
+		"<img src='images/blaze.jpg'  width='100%'/>"
+		],
+		["In what year did I first draw individual portraits of the kids?",
+		"2013",
+		"11/6/2013<img src='images/portraits.jpg'  width='100%'/>"
+		],
+		["Who wore a Philadelphia Eagles sweatshirt when we visited the Hill Air Force Museum?",
+		"joseph",
+		"<img src='images/hill.jpg'  width='100%'/>"
+		],
+		["What character was on Eva's shirt at our second Atria egg hunt (two years after the Blaze game)?",
+		"tinkerbell",
+		"<img src='images/atria.jpg'  width='100%'/>"
+		],
+		["Who fell asleep on the computer the same day that fudge exploded?",
+		"joshua",
+		"<img src='images/josleep.jpg'  width='100%'/>"
+		],
+		["Who played Mr. Green at Emily's Clue birthday party?",
+		"anita",
+		"<img src='images/emclue.jpg'  width='100%'/>"
+		],
+		["How many people were in on the 2016 New Years Eve toast?",
+		"6",
+		"<img src='images/nye2016.jpg'  width='100%'/>"
+		],
+		["What is on Eva's shirt at the 2017 Easter egg hunt at Legacy?",
+		"volleyball",
+		"<img src='images/easterlegacy.jpg'  width='100%'/>"
+		],
+		["What did the exchange student use as a pillow after visiting the planetarium?",
+		"joseph",
+		"<img src='images/pillow.jpg'  width='100%'/>"
+		],
+		["What number was on Eva's shirt when we visited museums and hiked Ensign Peak with the exchange students?",
+		"22",
+		"<img src='images/ensign.jpg'  width='100%'/>"
+		],
+		["What did Joseph's shirt say when we did the pirate escape room?",
+		"efy",
+		"<img src='images/escape.jpg'  width='100%'/>"
+		],
+		["How many family members were wearing glasses at Joshua's baptism?",
+		"7",
+		"<img src='images/jobaptism.jpg'  width='100%'/>"
+		],
+		["What color were your gloves when we went to Frightmares in 2018?",
+		"white",
+		"You are looking GOOD!<img src='images/frightmares.jpg'  width='100%'/>"
+		],
+		["What did Joseph's shirt say when we visited the Kirtland Temple?",
+		"new york",
+		"<img src='images/kirtland.jpg'  width='100%'/>"
+		],
+		["What brand of bug spray helped keep us from being eaten alive by mosquitos?",
+		"repel",
+		"<img src='images/mosquitos.jpg'  width='100%'/>"
+		],
+		["Where did the crazy hoarder live?",
+		"attic",
+		"<img src='images/attic.jpg'  width='100%'/>"
+		],
+		["What did Eva make fun of at Bonneville High in Idaho?",
+		"fighter bee",
+		"This came from Emily's phone<img src='images/bee.jpg'  width='100%'/>"
+		],
+		["How many people photobombed us when we boldly stopped the bus?",
+		"1",
+		"<img src='images/bus.jpg'  width='100%'/>"
+		],
+		["You've made it through to the end!!  I love you and all the wonderful memories that we've made!",
+		"done",
+		''
+		]
+	];
+	
+	
+		$(function(){
+		
+			$("body").css("background-color", "lightsteelblue");
+			$("#result").hide();
+			var msg = $("#msg");
+			msg.html("There are "+qArray.length +" questions for us to enjoy while we look back on some fun times!<br>Happy Anniversary!!!   Let's have some FUN!");
+			var chkBtn = $("#chkBtn");
+			if(document.cookie){
+				var currentQuestion = document.cookie;
+			} else {
+				var currentQuestion = 1;
+			}
+			var timesWrong = 1;
+			var currentPoints = 0;
+			var pointsEarned = 1;
+			
+			function updateCookie(){
+				document.cookie = currentQuestion;
+			}
+			
+			function countDelay(seconds){
+				//chkBtn.prop("disabled", true);
+				timeRemaining = seconds;
+				interv = setInterval(function(){
+					//for(i=0; i<seconds; i++){
+							//chkBtn.val("Try again in "+timeRemaining+" seconds");
+							timeRemaining -= 1;
+					//}
+					if(timeRemaining == 0){
+						clearInterval(interv);
+						chkBtn.val("Submit Answer");
+						chkBtn.prop("disabled", false);
+					}
+				}, 1000);
+				
+				
+			}
+			
+			function updateQuestion(){
+				$("#q").hide(400);
+				$("#q").html(currentQuestion+". "+qArray[currentQuestion-1][0]);
+				$("#q").show(400);
+			};
+			function updateMsg(){
+				$("#msg").html(qArray[currentQuestion-1][2]);
+			};
+			
+			function updateScore(){
+				//$("#score").html("<br>Current Points: "+currentPoints+"<br>Points Possible: "+(currentQuestion-1)+"<br>Current Grade: "+((currentPoints/(currentQuestion-1))*100).toFixed(2)+"%");
+			}
+			
+			updateQuestion();
+			
+			$("#help").on("click", function(){
+				updateMsg();
+				pointsEarned = .5;
+			});
+			
+			$("#giveUp").on("click", function(){
+				$("#answer").val(qArray[currentQuestion-1][1]);
+				pointsEarned = 0;
+			});
+			
+			$("#theForm").submit(function(e) {
+				e.preventDefault();
+			});
+			
+			$("#goback").on("click", function(){
+				if(currentQuestion>1){
+					currentQuestion--;
+					if(currentPoints > .5){
+						currentPoints-=1;
+					} else {
+						currentPoints = 0;
+					}
+					updateQuestion();
+					updateScore();
+				}
+			});
+			
+			$("#gonext").on("click", function(){
+				if(currentQuestion < qArray.length-1){
+					currentQuestion++;
+					
+					updateQuestion();
+					updateScore();
+				}
+			});
+			
+			chkBtn.on("click", function(){
+			var rightAnswerMessages = [
+				"You got it!",
+				"Nice work!",
+				"Brilliant!",
+				"Well done!",
+				"Right as usual!",
+				"You're on a roll!",
+				"You are amazing!",
+				"Right again!",
+				"Yep, that's it",
+				"I Love YOU!",
+				"Great job!",
+				"How did you guess?"
+			]
+				switch(true){
+					case $("#answer").val().toLowerCase() == qArray[currentQuestion-1][1]: 
+						var rightAnswerMessage = rightAnswerMessages[Math.floor(Math.random()*rightAnswerMessages.length)];
+						$("#result").html(rightAnswerMessage);
+						$("#result").fadeIn(200);
+						$("#result").fadeOut(2000);
+						timesWrong = 1;
+						updateMsg();
+						currentQuestion++;
+						updateCookie();
+						updateQuestion();
+						$("#answer").val("");
+						currentPoints += pointsEarned;
+						updateScore();
+						pointsEarned = 1;
+						break;
+					default : 
+						msg.prepend("nope, try again<br>");
+						countDelay(timesWrong*1);
+						$("#answer").val("");
+						timesWrong++;
+				}
+			});
+		
+		});
+	</script>
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif;">
+
+<div class="container-fluid" style="font-size: large">
+	<h1 align="center" style="background-color: midnightblue; color: white;">Memory Lane</h1>
+	<div id="q" align="center" style="  border: 1px solid;
+	background: white;
+	width: 80%;
+	font-size: x-large;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 10%;
+	padding: 10px;
+	box-shadow: 5px 10px 8px #888888;">
+		In what year did we first meet?
+	</div>
+	<p>
+	<form id="theForm">
+		<div align="center" style="font-size: large;">
+			Answer: <input type="text" id="answer" style="font-size: large; margin-bottom: 5px; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="submit" value="Submit Answer" id="chkBtn" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<br><br>
+			<input type="button" value="< Prev" id="goback" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="button" value="Helpful hint" id="help" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="button" value="What's the answer" id="giveUp" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="button" value="Next >" id="gonext" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			
+		</div>
+	</form>
+	</p>
+	<div id="result" align="center" style="font-size: xx-large; color: yellow; background-color: darkblue; display: none;">
+		YOU GOT IT!!
+	</div>
+	<div id="msg" align="center" style="background-color: yellow;">Happy Anniversary!!!   Let's have some FUN!</div>
+	<div id="score" align="center"></div>
+</div>
+</body>
+</html>
