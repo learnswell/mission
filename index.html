@@ -8,7 +8,7 @@
 	
 	
 		$(function(){
-		
+			distance = -1;
 			$("body").css("background-color", "MidnightBlue");
 			
 			$("#header").css({
@@ -31,7 +31,7 @@
 				var now = new Date().getTime();
 
 				// Find the distance between now and the count down date
-				var distance = anniversary - now;
+				distance = anniversary - now;
 
 				// Time calculations for days, hours, minutes and seconds
 				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -53,14 +53,18 @@
 							 "background-color": "#000524"
 							});
 			
+			$("#gohunt").hide();
+			
+			
 			var x = setInterval(function() {
 
 				getCountdown();
   // If the count down is finished, write some text
 				if (distance < 0) {
 					clearInterval(x);
-					$("#timer").html("Happy Anniversary<br>Check in the silver fridge!");
-				}
+					$("#timer").html("Happy Anniversary!!");
+					$("#gohunt").show();
+				} 
 			}, 1000);
 		});
 	</script>
@@ -73,8 +77,22 @@
 		Congratulations! You have proven your skills. Further instructions will follow...
 	</div>
 	<div id="content">
-	
+		 
 	</div>
+	<br>
+	<a id="gohunt" align="center" style="  border: 3px solid;
+	background: aliceblue;
+	display: block;
+	width: 50%;
+	border-radius: 20
+	font-size: x-large;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 25%;
+	padding: 10px;
+	box-shadow: 5px 10px 8px #888888;"
+	href="hunt.html">
+		<h2>Click here for your next mission</h2>
+	</a>
 </div>
 </body>
 </html>
