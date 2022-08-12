@@ -1,0 +1,200 @@
+
+<html>
+<head>
+	<title>Scavenger Hunt</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<script>
+	var qArray = [
+		["The answer below will surely be right if you add your age to Eva's height...<br> well, you actually need a bit more than I wrote. Open the photos app and use each note",
+		"148",
+		"<h2>Your final reward is not that great. But together we may enjoy it, you see. <br> Look in the pantry by a paper plate. Press it's power at the TV </h2>"
+		]
+		
+	];
+	
+	
+		$(function(){
+		
+			$("body").css("background-color", "lightsteelblue");
+			//$("#result").hide();
+			var msg = $("#msg");
+			//msg.html("When you find a clue enter the word in the answer box below (save each word, you may need them later)");
+			var chkBtn = $("#chkBtn");
+			if(document.cookie){
+				var currentQuestion = document.cookie;
+			} else {
+				var currentQuestion = 1;
+			}
+			var timesWrong = 1;
+			var currentPoints = 0;
+			var pointsEarned = 1;
+			
+			function updateCookie(){
+				document.cookie = currentQuestion;
+			}
+			
+			function countDelay(seconds){
+				//chkBtn.prop("disabled", true);
+				timeRemaining = seconds;
+				interv = setInterval(function(){
+					//for(i=0; i<seconds; i++){
+							//chkBtn.val("Try again in "+timeRemaining+" seconds");
+							timeRemaining -= 1;
+					//}
+					if(timeRemaining == 0){
+						clearInterval(interv);
+						chkBtn.val("Submit Answer");
+						chkBtn.prop("disabled", false);
+					}
+				}, 1000);
+				
+				
+			}
+			
+			function updateQuestion(){
+				//$("#q").hide(400);
+				theQ = $('#q');
+				theQ.fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0, function() { $(this).fadeTo(100, 0.3, function() { $(this).fadeTo(200, 1.0); }); }); });
+				currentQNumber = parseInt(currentQuestion)-1;
+				currentQArray = qArray[currentQNumber];
+				currentQText = currentQArray[0];
+				theQ.html(currentQuestion+". "+currentQText);
+
+				//$("#q").show(400);
+				
+			};
+			function updateMsg(){
+				$("#msg").html(qArray[currentQuestion-1][2]);
+			};
+			
+			function updateScore(){
+				//$("#score").html("<br>Current Points: "+currentPoints+"<br>Points Possible: "+(currentQuestion-1)+"<br>Current Grade: "+((currentPoints/(currentQuestion-1))*100).toFixed(2)+"%");
+			}
+			
+			updateQuestion();
+			
+			$("#help").on("click", function(){
+				updateMsg();
+				pointsEarned = .5;
+			});
+			
+			$("#giveUp").on("click", function(){
+				$("#answer").val(qArray[currentQuestion-1][1]);
+				pointsEarned = 0;
+			});
+			
+			$("#theForm").submit(function(e) {
+				e.preventDefault();
+			});
+			
+			$("#goback").on("click", function(){
+				if(currentQuestion>1){
+					currentQuestion--;
+					if(currentPoints > .5){
+						currentPoints-=1;
+					} else {
+						currentPoints = 0;
+					}
+					updateQuestion();
+					updateScore();
+				}
+			});
+			
+			$("#gonext").on("click", function(){
+				if(currentQuestion < qArray.length-1){
+					currentQuestion++;
+					
+					updateQuestion();
+					updateScore();
+				}
+			});
+			
+			chkBtn.on("click", function(){
+			$("#instructions").hide();
+			var rightAnswerMessages = [
+				"You got it!",
+				"Nice work!",
+				"Brilliant!",
+				"Well done!",
+				"Right as usual!",
+				"You're on a roll!",
+				"You are amazing!",
+				"Right again!",
+				"Yep, that's it",
+				"I Love YOU!",
+				"Great job!",
+				"How did you guess?"
+			]
+				switch(true){
+					case $("#answer").val().toLowerCase() == qArray[currentQuestion-1][1]: 
+						var rightAnswerMessage = rightAnswerMessages[Math.floor(Math.random()*rightAnswerMessages.length)];
+						$("#result").html(rightAnswerMessage);
+						$("#result").fadeIn(200);
+						$("#result").fadeOut(2000);
+						timesWrong = 1;
+						//updateMsg();
+						if(currentQuestion != qArray.length){
+							msg.html("");
+						} else {
+							updateMsg();
+							window.scrollTo(0, document.body.scrollHeight);
+						}
+						currentQuestion++;
+						updateCookie();
+						updateQuestion();
+						$("#answer").val("");
+						currentPoints += pointsEarned;
+						updateScore();
+						pointsEarned = 1;
+						break;
+					default : 
+						msg.prepend("nope, try again<br>");
+						countDelay(timesWrong*1);
+						$("#answer").val("");
+						timesWrong++;
+				}
+			});
+		
+		});
+	</script>
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif;">
+
+<div class="container-fluid" style="font-size: large">
+	<h2 align="center" style="background-color: midnightblue; color: white;">Treasure Hunt</h2>
+	<div id="q" align="center" style="  border: 1px solid;
+	background: white;
+	width: 80%;
+	font-size: x-large;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 10%;
+	padding: 10px;
+	box-shadow: 5px 10px 8px #888888;">
+		
+	</div>
+	<p>
+	<form id="theForm">
+		<div align="center" style="font-size: large;">
+			<input type="text" id="answer" style="font-size: large; margin-bottom: 5px; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="submit" value="Submit" id="chkBtn" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<br><br>
+			<input type="button" value="<" id="goback" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="button" value="Hint" id="help" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="button" value="Give up" id="giveUp" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			<input type="button" value=">" id="gonext" style="font-size: large; border-radius: 4px; padding: 10px 24px;"/>
+			
+		</div>
+	</form>
+	</p>
+	<div id="result" align="center" style="font-size: xx-large; color: aliceblue; background-color: darkblue; display: none;">
+	
+	</div>
+	<div id="msg" align="center" style="background-color: aliceblue;"><h1 id="instructions"align="center" style="background-color: yellow;"></h1>
+	</div>
+	<div id="score" align="center"></div>
+</div>
+</body>
+</html>
